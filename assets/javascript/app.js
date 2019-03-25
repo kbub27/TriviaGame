@@ -5,3 +5,31 @@
 
     // IF THE ANSWER IS CORRECT CONGRATS TO THEM
         // ELSE YOU SUCK
+// SET AN INTERVAL FOR AN IF STATEMENT 
+// QUESTION IS ANSWERED CORRECTLY THEN WE CAN MOVE ON ........
+
+
+
+
+var trivia = {
+    qSet1: {
+        question:'By law,  what is banned in Japanese restaurants?',
+        answers:[]
+    },
+    qSet2: {
+        question:'',
+        answers:[]
+    },
+    qSet3: {
+        question:'',
+        answers:[]
+    },
+    qSet4: {
+        question:'',
+        answers:[]
+    },
+    qSet5: {
+        question:'',
+        answers:[]
+    }
+};
