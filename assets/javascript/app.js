@@ -16,34 +16,47 @@ var intervalTime = 30000;
 var trivia = [
     qSet1 = {
         question:'By law,  what is banned in Japanese restaurants?',
-        answers:['tipping','farting','kissing'],
+        badAnswer1:'farting',
+        badAnswer2:'kissing',
+        correctAnswer:'tipping',
         name:'qSet1'
     },
     qSet2 = {
         question:'According to the 2000 census, in the UK, what is now considered a religion?',
-        answers:['Jedi Knight', 'The "Bock"', 'Pagan Elitism'],
+        badAnswer1:'The "Bock"',
+        badAnswer2:'Pagan Elitism',
+        correctAnswer:'Jedi Knight',
         name:'qSet2'
     },
     qSet3 = {
         question:'Forty three percent of women want to try sadomasochism after smelling what?',
-        answers:['Vanilla Extract','Mens sweat', 'Cologne'],
+        badAnswer1:'Sweat',
+        badAnswer2:'Cologne',
+        correctAnswer:'Vanilla Extract',
         name:'qSet3'
     },
     qSet4 = {
         question:'What peoples name means "eaters of raw flesh"?',
-        answers:['Scandanavian', 'Navajo', 'Eskimo'],
+        badAnswer1:'Scandanavian',
+        badAnswer2:'Navajo',
+        correctAnswer:'Eskimo',
         name:'qSet4'
     },
     qSet5 = {
         question:'The city of La Paz in Bolivia is safe from fire because of what?',
-        answers:['Altitude', 'Near the ocean', 'Fire is not allowed'],
+        badAnswer1:'No fire allowed in the city',
+        badAnswer2:'Near the ocean',
+        correctAnswer:'Altitude',
         name:'qSet5'
     }
 ];
 
-function getQ() {
+function getQandA() {
     for (let i = 0; i < trivia.length; i++) {
-        $('.question').append('<p class="' + trivia[i].name + '"' + '>' + trivia[i].question + '</p>')   
+        $('.question').append('<p class="' + trivia[i].name + '"' + '>' + trivia[i].question + '</p>');
+        $('.answers').append('<button class="' + trivia[i].name + 'btn btn-warning' + '"' + '>' + trivia[i].badAnswer1 + '</button>');
+        $('.answers').append('<button class="' + trivia[i].name + 'btn btn-warning' + '"' + '>' + trivia[i].badAnswer2 + '</button>');
+        $('.answers').append('<button class="' + trivia[i].name + 'btn btn-warning' + '"' + '>' + trivia[i].correctAnswer + '</button>');
     }
 };
 
@@ -54,6 +67,6 @@ function hideQuestions() {
 
 setTimeout(hideQuestions,10);
 
-getQ();
+getQandA();
 
 });
