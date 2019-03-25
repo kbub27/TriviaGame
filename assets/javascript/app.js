@@ -11,14 +11,16 @@
 $(document).ready(function () {
     
 
-var intervalTime = 30000;
+var timer = 30;
+var qSet = 1;
+var timerId;
 
 var trivia = [
     qSet1 = {
         question:'By law,  what is banned in Japanese restaurants?',
-        badAnswer1:'farting',
-        badAnswer2:'kissing',
-        correctAnswer:'tipping',
+        badAnswer1:'Farting',
+        badAnswer2:'Kissing',
+        correctAnswer:'Tipping',
         name:'qSet1'
     },
     qSet2 = {
@@ -51,22 +53,89 @@ var trivia = [
     }
 ];
 
+//SET UP A TIMER 
+function run() {
+    timerId = setInterval(timeLeft, 1000);
+};
+
+function timeLeft() {
+
+    timer--;
+    console.log(timer);
+    if (timer === 0) {
+      qSet++;
+      stop();
+      alert("Times Up!");
+      hideQuestions();
+      nextQuestion();
+      run();
+    }
+};
+
+function stop() {
+    timer = 30;
+    clearInterval(timerId);
+};
+
+
 function getQandA() {
     for (let i = 0; i < trivia.length; i++) {
         $('.question').append('<p class="' + trivia[i].name + '"' + '>' + trivia[i].question + '</p>');
-        $('.answers').append('<button class="' + trivia[i].name + 'btn btn-warning' + '"' + '>' + trivia[i].badAnswer1 + '</button>');
-        $('.answers').append('<button class="' + trivia[i].name + 'btn btn-warning' + '"' + '>' + trivia[i].badAnswer2 + '</button>');
-        $('.answers').append('<button class="' + trivia[i].name + 'btn btn-warning' + '"' + '>' + trivia[i].correctAnswer + '</button>');
+        $('.answers').append('<button class="' + trivia[i].name + ' bad btn btn-warning' + '"' + '>' + trivia[i].badAnswer1 + '</button>');
+        $('.answers').append('<button class="' + trivia[i].name + ' bad btn btn-warning' + '"' + '>' + trivia[i].badAnswer2 + '</button>');
+        $('.answers').append('<button class="' + trivia[i].name + ' correct btn btn-warning' + '"' + '>' + trivia[i].correctAnswer + '</button>');
     }
 };
 
 function hideQuestions() {
-    $('.question').hide(10);
-    $('.answers').hide(10);
+    $('.qSet1').hide(10);
+    $('.qSet2').hide(10);
+    $('.qSet3').hide(10);
+    $('.qSet4').hide(10);
+    $('.qSet5').hide(10);
+};
+
+function nextQuestion() {
+    if (qSet === 2) {
+        $('.qSet2').show();
+    } else if (qSet === 3) {
+        $('.qSet3').show();
+    } else if (qSet == 4) {
+        $('.qSet4').show();
+    } else if (qSet === 5) {
+        $('.qSet5').show();
+    } else {
+        alert('Game over');
+        hideQuestions();
+        stop();
+    }
+};
+
+function show() {
+    getQandA();
+    hideQuestions();
+    $('.qSet1').show();
+        $('.correct').click(function () {
+            hideQuestions();
+            alert('Correct');
+            qSet++;
+            nextQuestion();
+            stop();
+            run();
+            if (qSet > 5) {
+                stop();
+            }
+        });
+        $('.bad').click(function () {
+            hideQuestions();
+            alert('Wrong Answer! Now you must wait in timeout!');
+            if (qSet > 5) {
+                stop();
+            }
+        })
 }
 
-setTimeout(hideQuestions,10);
-
-getQandA();
+show();
+run();
 
 });
