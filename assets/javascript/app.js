@@ -47,7 +47,12 @@ function getQ() {
     }
 };
 
+function hideQuestions() {
+    $('.question').hide(10);
+    $('.answers').hide(10);
+}
 
+setTimeout(hideQuestions,10);
 
 getQ();
 
