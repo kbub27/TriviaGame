@@ -11,7 +11,7 @@
 $(document).ready(function () {
 
 
-    var timer = 30;
+    var timer = 15;
     var qSet = 1;
     var timerId;
 
@@ -74,7 +74,7 @@ $(document).ready(function () {
     };
 
     function stop() {
-        timer = 30;
+        timer = 15;
         clearInterval(timerId);
     };
 
@@ -98,6 +98,8 @@ $(document).ready(function () {
     };
 
     function nextQuestion() {
+        $('h3').text('Click to answer');
+
         if (qSet === 2) {
             $('.qSet2').show();
         } else if (qSet === 3) {
@@ -131,7 +133,8 @@ $(document).ready(function () {
             }
         });
         $('.bad').click(function () {
-            hideQuestions();
+            $('h3').text('Correct answer was');
+            $('.bad').hide(5000);
             alert('Wrong Answer! Now you must wait in timeout!');
             if (qSet > 5) {
                 stop();
