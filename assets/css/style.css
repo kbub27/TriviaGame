@@ -1,0 +1,23 @@
+body {
+    background-image: url(../images/triviabackground.jpg);
+    background-repeat: none;
+    background-size: 100%;
+    color: rgb(11, 0, 59);
+    margin: 0 auto;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+h1 {
+    font-size: 54px;
+}
+
+p {
+    font-size: 32px;
+    font-weight: lighter;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.btn {
+    margin: 10px;
+}

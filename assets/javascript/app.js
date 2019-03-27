@@ -14,11 +14,12 @@ $(document).ready(function () {
     var timer = 15;
     var qSet = 1;
     var timerId;
+    var wins = 0;
 
     var trivia = [
         qSet1 = {
             question: 'By law,  what is banned in Japanese restaurants?',
-            badAnswer1: 'Farting',
+            badAnswer1: 'Hugging',
             badAnswer2: 'Kissing',
             correctAnswer: 'Tipping',
             name: 'qSet1'
@@ -110,8 +111,10 @@ $(document).ready(function () {
             $('.qSet5').show();
         } else {
             alert('Game over');
+            alert ('You Got ' + wins + ' Answers Correct! Try Again!!');
             hideQuestions();
             stop();
+            resetGame();
         }
     };
 
@@ -124,6 +127,7 @@ $(document).ready(function () {
             hideQuestions();
             alert('Correct');
             qSet++;
+            wins++;
             nextQuestion();
             $('h3').show();
             stop();
@@ -140,6 +144,13 @@ $(document).ready(function () {
                 stop();
             }
         })
+    }
+
+    function resetGame() {
+        qSet = 1;
+        timer = 15;
+        $('.qSet1').show();
+        run();
     }
 
     show();
