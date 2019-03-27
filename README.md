@@ -1,5 +1,5 @@
 # TriviaGame
-* [Play the game here!] (https://kbub27.github.io/TriviaGame)
+[Play the game here!](https://kbub27.github.io/TriviaGame)
 
 * A game of trivial questions!
 
